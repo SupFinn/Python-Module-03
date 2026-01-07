@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import sys
 
 if __name__ == "__main__":
@@ -9,7 +11,7 @@ if __name__ == "__main__":
         try:
             score_list = []
             for score in sys.argv[1:]:
-                score_list += [int(score)]
+                score_list.append(int(score))
         except ValueError:
             print(f"Oops! One of the scores is not a number. Cheating detected! 🚫")
         else:
