@@ -2,7 +2,7 @@
 
 import sys
 
-if __name__ == "__main__":
+def main():
     print("=== Command Quest ===")
 
     args_len = len(sys.argv)
@@ -18,3 +18,7 @@ if __name__ == "__main__":
             print(f"Argument {i}: {arg}")
             i += 1
         print(f"Total arguments: {args_len}")
+
+
+if __name__ == "__main__":
+    main()

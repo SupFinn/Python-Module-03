@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-if __name__ == "__main__":
+def main():
 
     print("=== Player Inventory System ===\n")
 
@@ -108,3 +108,7 @@ if __name__ == "__main__":
         print(item, end="")
         if i < len(rarest_items) - 1:
             print(", ", end="")
+
+
+if __name__ == "__main__":
+    main()

@@ -2,7 +2,7 @@
 
 import math
 
-if __name__ == "__main__":
+def main():
     print("=== Game Coordinate System ===\n")
 
     origin = (0, 0, 0)
@@ -67,3 +67,7 @@ if __name__ == "__main__":
     print("Unpacking demonstration:")
     print(f"Player at x={x2}, y={y2}, z={z2}")
     print(f"Coordinates: X={x2}, Y={y2}, Z={z2}")
+
+
+if __name__ == "__main__":
+    main()

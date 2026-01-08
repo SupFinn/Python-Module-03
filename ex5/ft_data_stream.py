@@ -1,12 +1,9 @@
 #!/usr/bin/python3
 
-def count_to(n):
-    count = 1
-    while count <= n:
-        yield count
-        count+=1
+def main():
+    print("=== Game Data Stream Processor ===\n")
+    print("Processing 1000 game events...")
+    
 
-numbers = int(input("Enter a Number: "))
-
-for n in count_to(numbers):
-    print(n)
+if __name__ == "_main_":
+    main()

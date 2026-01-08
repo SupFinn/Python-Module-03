@@ -2,7 +2,7 @@
 
 import sys
 
-if __name__ == "__main__":
+def main():
     print("=== Player Score Analytics ===")
 
     if len(sys.argv) == 1:
@@ -27,3 +27,7 @@ if __name__ == "__main__":
             print(f"High score: {score_max}")
             print(f"Low score: {score_min}")
             print(f"Score range: {score_range}")
+    
+
+if __name__ == "__main__":
+    main()
