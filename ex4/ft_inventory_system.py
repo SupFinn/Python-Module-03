@@ -10,7 +10,7 @@ if __name__ == "__main__":
             "sword": {"category": "weapon", "rarity": "rare", "quantity": 1, "value": 500},
             "potion": {"category": "consumable", "rarity": "common", "quantity": 5, "value": 50},
             "shield": {"category": "armor", "rarity": "uncommon", "quantity": 1, "value": 200},
-            "magic_ring": {"category": "accessory", "rarity": "rare", "quantity": 0, "value": 1000}  # added for analytics
+            "magic_ring": {"category": "accessory", "rarity": "rare", "quantity": 0, "value": 1000}
         },
         "bob": {
             "sword": {"category": "weapon", "rarity": "rare", "quantity": 0, "value": 500},
