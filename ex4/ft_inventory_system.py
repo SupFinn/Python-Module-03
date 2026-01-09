@@ -108,7 +108,7 @@ def main():
         print(item, end="")
         if i < len(rarest_items) - 1:
             print(", ", end="")
-
+    
 
 if __name__ == "__main__":
     main()
