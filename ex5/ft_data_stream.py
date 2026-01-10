@@ -354,18 +354,15 @@ events = [
 ]
 
 
-
-    
 def myGen():
     for i in range(1000):
         for event in events:
             yield event
 
+
 def main():
-    print("=== Game Data Stream Processor ===")
-    print()
+    print("=== Game Data Stream Processor ===\n")
     print("Processing 1000 game events...\n")
-    print()
 
     gen = iter(myGen())
     count = 1
@@ -380,22 +377,22 @@ def main():
         if event['event_type'] == "leveled up":
             level_up_count += 1
 
-        print(f"Event {count}: Player {event['player']} (level {event['data']['level']}) {event['event_type']}")
+        print(
+            f"Event {count}: Player {event['player']} "
+            f"(level {event['data']['level']}) {event['event_type']}"
+        )
         count += 1
 
-    print()
-    print("=== Stream Analytics ===")
+    print("\n=== Stream Analytics ===")
     print(f"Total events processed: {count - 1}")
-    print(f"High-level players (10+): {high_level_count}")  
-    print(f"Treasure events: {high_level_count}")  
+    print(f"High-level players (10+): {high_level_count}")
+    print(f"Treasure events: {high_level_count}")
     print(f"Level-up events: {level_up_count}")
-    
-    print()
-    print(f"Memory usage: Constant (streaming)")
-    print(f"Processing time: 0.045 seconds")
 
-    print()
-    print("=== Generator Demonstration ===")
+    print("\nMemory usage: Constant (streaming)")
+    print("Processing time: 0.045 seconds")
+
+    print("\n=== Generator Demonstration ===")
     print("Fibonacci sequence (first 10): ", end="")
     a, b = 0, 1
     for i in range(10):
@@ -406,8 +403,7 @@ def main():
         a = b
         b = c
 
-    print()
-    print("Prime numbers (first 5): ", end="")
+    print("\nPrime numbers (first 5): ", end="")
     count = 0
     num = 2
     while count < 5:

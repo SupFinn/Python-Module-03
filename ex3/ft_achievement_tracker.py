@@ -3,14 +3,30 @@
 def main():
     print("=== Achievement Tracker System ===\n")
 
-    alice = {"first_kill", "level_10", "treasure_hunter", "speed_demon"}
-    bob = {"first_kill", "level_10", "boss_slayer", "collector"}
-    charlie = {"level_10", "treasure_hunter", "boss_slayer", "speed_demon", "perfectionist"}
-    
+    alice = {
+        "first_kill",
+        "level_10",
+        "treasure_hunter",
+        "speed_demon",
+    }
+    bob = {
+        "first_kill",
+        "level_10",
+        "boss_slayer",
+        "collector",
+    }
+    charlie = {
+        "level_10",
+        "treasure_hunter",
+        "boss_slayer",
+        "speed_demon",
+        "perfectionist",
+    }
+
     print(f"Player alice achievements: {alice}")
     print(f"Player bob achievements: {bob}")
     print(f"Player charlie achievements: {charlie}")
-    
+
     print("\n=== Achievement Analytics ===")
     print(f"All unique achievements: {alice.union(bob, charlie)}")
     print(f"Total unique achievements: {len(alice.union(bob, charlie))}")

@@ -2,6 +2,7 @@
 
 import math
 
+
 def main():
     print("=== Game Coordinate System ===\n")
 
