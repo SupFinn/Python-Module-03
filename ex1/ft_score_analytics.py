@@ -3,7 +3,15 @@
 import sys
 
 
-def main():
+def analyze_scores():
+    """
+    Player Score Analytics: Processes command-line scores
+    and provides statistics.
+
+    Displays total players, total score, average, high, low, and score range.
+    Handles invalid (non-numeric) inputs gracefully.
+    """
+
     print("=== Player Score Analytics ===")
 
     if len(sys.argv) == 1:
@@ -15,7 +23,7 @@ def main():
         try:
             score_list = []
             for score in sys.argv[1:]:
-                score_list.append(int(score))
+                score_list += [int(score)]
         except ValueError:
             print(
                 "Oops! One of the scores is not a "
@@ -32,4 +40,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    analyze_scores()

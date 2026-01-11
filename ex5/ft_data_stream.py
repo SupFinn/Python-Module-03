@@ -354,17 +354,37 @@ events = [
 ]
 
 
-def myGen():
-    for i in range(1000):
+def my_gen():
+    """
+    Infinite generator for game events.
+
+    Loops over the global `events` list endlessly, yielding
+    one event at a time.
+    Useful for simulating a continuous data stream without
+    loading all events repeatedly.
+    """
+    while True:
         for event in events:
             yield event
 
 
-def main():
+def process_game_events():
+    """
+    Game Data Stream Processor.
+
+    - Processes 1000 game events using `my_gen()`.
+    - Counts high-level players (level >= 10), treasure
+        events, and level-up events.
+    - Prints each event with player and level information.
+    - Demonstrates memory-efficient streaming.
+    - Includes generator demonstrations: Fibonacci
+        sequence and prime numbers.
+    """
+
     print("=== Game Data Stream Processor ===\n")
     print("Processing 1000 game events...\n")
 
-    gen = iter(myGen())
+    gen = iter(my_gen())
     count = 1
     high_level_count, treasure_count, level_up_count = 0, 0, 0
 
@@ -422,4 +442,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    process_game_events()

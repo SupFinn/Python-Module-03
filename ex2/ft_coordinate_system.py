@@ -7,6 +7,7 @@ def parse_coordinates(coord_str: str) -> tuple:
     """
     Parse a string like "x,y,z" into a 3D tuple (x, y, z).
     """
+
     parts = coord_str.split(",")
 
     if len(parts) != 3:
@@ -37,6 +38,15 @@ def distance_3d(p1: tuple, p2: tuple) -> float:
 
 
 def main() -> None:
+    """
+    Game Coordinate System: Parses 3D coordinates and calculates distances.
+
+    Demonstrates:
+    - Parsing coordinates from strings
+    - Calculating distance from the origin
+    - Handling invalid input
+    - Unpacking coordinate tuples
+    """
     print("=== Game Coordinate System ===\n")
 
     origin = (0, 0, 0)

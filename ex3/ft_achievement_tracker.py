@@ -1,6 +1,16 @@
 #!/usr/bin/python3
 
-def main():
+def achievement_tracker():
+    """
+    Achievement Tracker System: Analyzes player achievements.
+
+    Displays each player's achievements, calculates:
+    - All unique achievements
+    - Achievements common to all players
+    - Rare achievements (held by only one player)
+    - Player-specific comparisons
+    """
+
     print("=== Achievement Tracker System ===\n")
 
     alice = {
@@ -44,4 +54,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    achievement_tracker()

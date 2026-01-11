@@ -1,70 +1,80 @@
 #!/usr/bin/python3
 
-def main():
+# Players and their items
+players = {
+    "Alice": {
+        "sword": {
+            "category": "weapon",
+            "rarity": "rare",
+            "quantity": 1,
+            "value": 500,
+        },
+        "potion": {
+            "category": "consumable",
+            "rarity": "common",
+            "quantity": 5,
+            "value": 50,
+        },
+        "shield": {
+            "category": "armor",
+            "rarity": "uncommon",
+            "quantity": 1,
+            "value": 200,
+        },
+        "magic_ring": {
+            "category": "accessory",
+            "rarity": "rare",
+            "quantity": 0,
+            "value": 1000,
+        },
+    },
+    "Bob": {
+        "sword": {
+            "category": "weapon",
+            "rarity": "rare",
+            "quantity": 0,
+            "value": 500,
+        },
+        "potion": {
+            "category": "consumable",
+            "rarity": "common",
+            "quantity": 0,
+            "value": 50,
+        },
+        "shield": {
+            "category": "armor",
+            "rarity": "uncommon",
+            "quantity": 0,
+            "value": 200,
+        },
+        "magic_ring": {
+            "category": "accessory",
+            "rarity": "rare",
+            "quantity": 0,
+            "value": 1000,
+        },
+    },
+}
+
+
+def manage_inventories():
+    """
+    Player Inventory System: Manages and analyzes player inventories.
+
+    Features:
+    - Displays each player's items, quantities, categories, and total value
+    - Handles transactions between players
+    - Calculates inventory analytics: most valuable player,
+        most items, and rarest items
+    """
 
     print("=== Player Inventory System ===\n")
-
-    # Players and their items
-    players = {
-        "alice": {
-            "sword": {
-                "category": "weapon",
-                "rarity": "rare",
-                "quantity": 1,
-                "value": 500,
-            },
-            "potion": {
-                "category": "consumable",
-                "rarity": "common",
-                "quantity": 5,
-                "value": 50,
-            },
-            "shield": {
-                "category": "armor",
-                "rarity": "uncommon",
-                "quantity": 1,
-                "value": 200,
-            },
-            "magic_ring": {
-                "category": "accessory",
-                "rarity": "rare",
-                "quantity": 0,
-                "value": 1000,
-            },
-        },
-        "bob": {
-            "sword": {
-                "category": "weapon",
-                "rarity": "rare",
-                "quantity": 0,
-                "value": 500,
-            },
-            "potion": {
-                "category": "consumable",
-                "rarity": "common",
-                "quantity": 0,
-                "value": 50,
-            },
-            "shield": {
-                "category": "armor",
-                "rarity": "uncommon",
-                "quantity": 0,
-                "value": 200,
-            },
-            "magic_ring": {
-                "category": "accessory",
-                "rarity": "rare",
-                "quantity": 0,
-                "value": 1000,
-            },
-        },
-    }
 
     # Print Alice's Inventory
     total_gold = 0
     total_quantity = 0
     print("=== Alice's Inventory ===")
-    for item_name, item_data in players["alice"].items():
+    for item_name, item_data in players["Alice"].items():
         if item_data['quantity'] > 0:
             print(
                 f"{item_name} ({item_data['category']}, "
@@ -80,11 +90,11 @@ def main():
 
     # Count categories dynamically
     category_count = {}
-    for item_name, item_data in players["alice"].items():
+    for item_name, item_data in players["Alice"].items():
         if item_data["quantity"] > 0:
             cat = item_data["category"]
             qty = item_data["quantity"]
-            category_count[cat] = category_count.get(cat, 0) + qty
+            category_count[cat] = qty
 
     i = 0
     print("Categories: ", end="")
@@ -97,13 +107,13 @@ def main():
 
     # Transaction: Alice gives Bob 2 potions
     print("\n=== Transaction: Alice gives Bob 2 potions ===")
-    players["alice"]["potion"]["quantity"] -= 2
-    players["bob"]["potion"]["quantity"] += 2
+    players["Alice"]["potion"]["quantity"] -= 2
+    players["Bob"]["potion"]["quantity"] += 2
     print("Transaction successful!\n")
 
     print("=== Updated Inventories ===")
-    print(f"Alice potions: {players['alice']['potion']['quantity']}")
-    print(f"Bob potions: {players['bob']['potion']['quantity']}")
+    print(f"Alice potions: {players['Alice']['potion']['quantity']}")
+    print(f"Bob potions: {players['Bob']['potion']['quantity']}")
 
     # Inventory Analytics
     print("\n=== Inventory Analytics ===")
@@ -119,23 +129,24 @@ def main():
             highest_gold = total
             most_valuable = player_name
     print(
-         f"Most valuable player: {most_valuable.capitalize()} "
+         f"Most valuable player: {most_valuable} "
          f"({highest_gold} gold)"
         )
 
     # Most items
     most_items_player = ""
     highest_items = 0
+
     for player_name, player_data in players.items():
-        total_items = (sum(item_data["quantity"] for
-                           item_data in player_data.values()))
+        total_items = 0
+        for item_data in player_data.values():
+            total_items += item_data["quantity"]
+
         if total_items > highest_items:
             highest_items = total_items
             most_items_player = player_name
-    print(
-        f"Most items: {most_items_player.capitalize()} "
-        f"({highest_items} items)"
-        )
+
+    print(f"Most items: {most_items_player} ({highest_items} items)")
 
     # Rarest items
     rarity_rank = {"common": 1, "uncommon": 2, "rare": 3, "legendary": 4}
@@ -150,15 +161,17 @@ def main():
                 highest_rarity = rank
                 rarest_items = [item_name]
             elif rank == highest_rarity and item_name not in rarest_items:
-                rarest_items.append(item_name)
+                rarest_items += [item_name]
 
     # Print rarest items
     print("Rarest items: ", end="")
-    for i, item in enumerate(rarest_items):
-        print(item, end="")
+    i = 0
+    while i < len(rarest_items):
+        print(rarest_items[i], end="")
         if i < len(rarest_items) - 1:
             print(", ", end="")
+        i += 1
 
 
 if __name__ == "__main__":
-    main()
+    manage_inventories()

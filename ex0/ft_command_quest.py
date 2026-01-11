@@ -3,7 +3,14 @@
 import sys
 
 
-def main():
+def display_args():
+    """
+    Command Quest: Displays the program name and command-line arguments.
+
+    Prints the total number of arguments and lists each argument passed
+    when running the script from the command line.
+    """
+
     print("=== Command Quest ===")
 
     args_len = len(sys.argv)
@@ -22,4 +29,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    display_args()
