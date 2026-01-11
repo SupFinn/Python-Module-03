@@ -112,7 +112,7 @@ Short code is not the goal — **clear and correct code is**.
 
 ## 🧪 Testing
 
-Each exercise can be tested directly from the terminal:
+exercise with args can be tested directly from the terminal:
 
 ```bash
 python3 your_file.py [arguments]
