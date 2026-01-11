@@ -3,71 +3,85 @@
 import math
 
 
-def main():
+def parse_coordinates(coord_str: str) -> tuple:
+    """
+    Parse a string like "x,y,z" into a 3D tuple (x, y, z).
+    """
+    parts = coord_str.split(",")
+
+    if len(parts) != 3:
+        raise ValueError("Coordinates must be 3D")
+
+    try:
+        x = int(parts[0])
+        y = int(parts[1])
+        z = int(parts[2])
+    except ValueError as e:
+        raise ValueError(e)
+
+    return tuple((x, y, z))
+
+
+def distance_3d(p1: tuple, p2: tuple) -> float:
+    """
+    Calculate the Euclidean distance between two 3D points.
+    """
+    x1, y1, z1 = p1
+    x2, y2, z2 = p2
+
+    return math.sqrt(
+        (x2 - x1) ** 2 +
+        (y2 - y1) ** 2 +
+        (z2 - z1) ** 2
+    )
+
+
+def main() -> None:
     print("=== Game Coordinate System ===\n")
 
     origin = (0, 0, 0)
 
     # ---- First coordinate ----
-    coord1 = "10,20,5"
-    coords1 = coord1.split(",")
+    coord = "10,20,5"
+    position = parse_coordinates(coord)
 
-    x1 = int(coords1[0])
-    y1 = int(coords1[1])
-    z1 = int(coords1[2])
+    print(f"Position created: {position}")
 
-    position1 = (x1, y1, z1)
-
-    distance1 = math.sqrt(
-        (x1 - origin[0]) ** 2 +
-        (y1 - origin[1]) ** 2 +
-        (z1 - origin[2]) ** 2
+    dist = distance_3d(origin, position)
+    print(
+        f"Distance between {origin} and {position}: {dist:.2f}"
     )
-
-    print(f"Position created: {position1}")
-    print(f"Distance between {origin} and {position1}: {distance1:.2f}\n")
 
     # ---- Second coordinate ----
-    coord2 = "3,4,0"
-    print(f'Parsing coordinates: "{coord2}"')
+    coord = "3,4,0"
+    print(f'\nParsing coordinates: "{coord}"')
 
-    coords2 = coord2.split(",")
+    position = parse_coordinates(coord)
+    print(f"Parsed position: {position}")
 
-    x2 = int(coords2[0])
-    y2 = int(coords2[1])
-    z2 = int(coords2[2])
-
-    position2 = (x2, y2, z2)
-
-    distance2 = math.sqrt(
-        (x2 - origin[0]) ** 2 +
-        (y2 - origin[1]) ** 2 +
-        (z2 - origin[2]) ** 2
+    dist = distance_3d(origin, position)
+    print(
+        f"Distance between {origin} and {position}: {dist}"
     )
 
-    print(f"Parsed position: {position2}")
-    print(f"Distance between {origin} and {position2}: {distance2}\n")
-
     # ---- Invalid coordinate ----
-    invalid = "abc,def,ghi"
-    print(f'Parsing invalid coordinates: "{invalid}"')
+    coord = "abc,def,ghi"
+    print(f'\nParsing invalid coordinates: "{coord}"')
 
     try:
-        invalid_coords = invalid.split(",")
-
-        int(invalid_coords[0])
-        int(invalid_coords[1])
-        int(invalid_coords[2])
-
+        parse_coordinates(coord)
     except ValueError as e:
         print(f"Error parsing coordinates: {e}")
-        print(f'Error details - Type: ValueError, Args: ("{e}",)')
-        print()
+        print(
+            f'Error details - Type: ValueError, Args: ("{e}",)'
+        )
 
     # ---- Unpacking demonstration ----
-    print("Unpacking demonstration:")
-    print(f"Player at x={x2}, y={y2}, z={z2}")
-    print(f"Coordinates: X={x2}, Y={y2}, Z={z2}")
+    print("\nUnpacking demonstration:")
+
+    x, y, z = position
+    print(f"Player at x={x}, y={y}, z={z}")
+    print(f"Coordinates: X={x}, Y={y}, Z={z}")
 
 
 if __name__ == "__main__":
