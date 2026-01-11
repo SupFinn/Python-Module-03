@@ -22,18 +22,13 @@ def main():
                 "number. Cheating detected! 🚫"
                 )
         else:
-            score_len = len(score_list)
-            score_sum = sum(score_list)
-            score_max = max(score_list)
-            score_min = min(score_list)
-            score_range = score_max - score_min
             print(f"Scores processed: {score_list}")
-            print(f"Total players: {score_len}")
-            print(f"Total score: {score_sum}")
-            print(f"Average score: {score_sum / score_len}")
-            print(f"High score: {score_max}")
-            print(f"Low score: {score_min}")
-            print(f"Score range: {score_range}")
+            print(f"Total players: {len(score_list)}")
+            print(f"Total score: {sum(score_list)}")
+            print(f"Average score: {sum(score_list) / len(score_list)}")
+            print(f"High score: {max(score_list)}")
+            print(f"Low score: {min(score_list)}")
+            print(f"Score range: {max(score_list) - min(score_list)}")
 
 
 if __name__ == "__main__":
