@@ -11,14 +11,14 @@ def parse_coordinates(coord_str: str) -> tuple:
     parts = coord_str.split(",")
 
     if len(parts) != 3:
-        raise ValueError("Coordinates must be 3D")
+        print("Coordinates must be 3D")
 
     try:
         x = int(parts[0])
         y = int(parts[1])
         z = int(parts[2])
     except ValueError as e:
-        raise ValueError(e)
+        print(e)
 
     return tuple((x, y, z))
 
